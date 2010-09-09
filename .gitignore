@@ -1,3 +1,4 @@
 settings.php
 sites/default/files/*
 *.sqlite
+*.swp
