@@ -1,0 +1,34 @@
+<?php
+    function projectr_init()
+    {
+    }
+
+    function projectr_block_info() 
+    {
+        // This example comes from node.module.
+        $blocks['videolist'] = array(
+          'info' => t('Video List'),
+        );
+
+        return $blocks;
+    }    
+
+function projectr_block_view($delta = '') {
+  // This example comes from node.module. Note that you can also return a
+  // renderable array rather than rendered HTML for 'content'.
+  $block = array();
+
+  switch ($delta) {
+    case 'videolist':
+      $block['subject'] = t('Video List');
+      $block['content'] = _getVideoList();
+      break;
+
+  }
+  return $block;
+}    
+
+    function _getVideoList()
+    {
+        return 'blaaaaah';
+    }

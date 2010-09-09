@@ -1,0 +1,6 @@
+name = Project R
+description = Project R helper module
+
+core = 7.x
+
+files[] = projectr.module
