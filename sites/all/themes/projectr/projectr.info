@@ -1,0 +1,11 @@
+name = Project R
+description = This is the Theme for Project R.
+package = Core
+version = VERSION
+core = 7.x
+engine = phptemplate
+stylesheets[all][] = layout.css
+
+version = "7.0-alpha6"
+project = "drupal"
+datestamp = "1278634806"
