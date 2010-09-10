@@ -28,7 +28,86 @@ function projectr_block_view($delta = '') {
   return $block;
 }    
 
+	function projectr_node_view($node, $view_mode) 
+	{
+/*$node->content['somefield'] = array(
+    '#markup' 				=> 'AAAAAAAAAAAAAAAAAAAAAAAAAAAaaaaaaaaaaaaaaaaaaaa',
+    '#weight' 				=> 10,
+    '#theme' 				=> 'field',
+	'#label_display' 		=> '',
+	'#title'				=> 'aaa',
+	'#value'				=> 'bbb',
+	'#items'				=> array( '#value' => 'aaaaaaa' ),
+	'#field_name'			=> '',
+	'#field_type'			=> '',
+  );*/
+
+// 		$node->body[$node->language][0]['value'] .= "A line of text added by program.";
+
+		if( $node->type == 'video' )
+		{
+			$node->content['field_video_url'] = '';
+			$node->content['field_video_weight'] = '';
+			$node->content['field_video_screenshot'] = '';
+			// echo $node->type;
+		}
+		/*
+  		$node->content['my_additional_field'] = array(
+    		'#markup' => $additional_field,
+    		'#weight' => 10,
+    		'#theme' => 'mymodule_my_additional_field',
+  		);
+		*/
+	}
+
     function _getVideoList()
     {
-        return 'blaaaaah';
+		$query_text = sprintf( '
+									SELECT 
+                                        n.nid AS nid,
+                                        n.title AS title,
+                                        vw.field_video_weight_value AS weight,
+										n.changed AS changed
+                                    FROM
+                                        {node} AS n
+                                    LEFT OUTER JOIN 
+										{field_data_field_video_weight} AS vw
+                                    ON (n.nid=vw.entity_id)
+                                    WHERE 
+                                        n.type="video" AND n.status=1
+                                    ORDER BY 
+										weight, changed DESC
+									LIMIT 5
+                               '
+							);
+		$result = db_query( $query_text );
+		$retval = '';
+
+		if( $result )
+		{
+			foreach( $result as $row )
+            {
+				$node   = node_load( $row->nid );
+				// var_dump($node);
+				//echo $node->field_video_screenshot[0]['uri'];
+				if( sizeof( $node->field_video_screenshot ) )
+				{
+					$img_url = image_style_url( 'screenshot', $node->field_video_screenshot['und'][0]['uri'] );
+				}
+				else
+				{
+					$img_url = url( drupal_get_path( 'theme', 'projectr' ) . '/images/video.jpg' );
+				}
+				$link = url( 'node/' . $node->nid );
+				$retval .= <<<DIVS
+					<div style='width:125px;display:inline;margin-right:15px;' title="{$node->title}">
+						<a href="{$link}">
+							<img src="$img_url" border="0" />
+						</a>
+					</div>
+DIVS;
+			}
+		}
+
+        return '<p></p>' . $retval;
     }

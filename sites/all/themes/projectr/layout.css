@@ -20,22 +20,80 @@ body
 {
     color: #fff;
     background: url( images/bg.jpg ) no-repeat #000 center top;
+	background-attachment: fixed;
+	font-family:"Times New Roman", Times, serif;
+	font-size: 1.2em;
+	line-height: 1.2em;
 }
 
+a
+{
+	color: #3B5998;
+	font-size:1.1em;
+	text-decoration: none;
+	font-weight: bold;
+	text-shadow: #aaa 1px 1px 2px;
+}
 
+a:hover
+{
+	text-decoration: underline;
+}
+.submitted
+{
+	font-size: 10px;
+	color: #ddd;
+}
+
+.breadcrumb
+{
+	font-size: 12px;
+	color: #ddd;
+}
+
+.breadcrumb a
+{
+	color: #ddd;
+}
+
+#page-title
+{
+	color: #111;
+	text-shadow: #fff 2px 2px 5px;
+}
 
 #page
 {
     background-color: #000;
     width:960px;
     margin:0 auto;
-    opacity: 0.8;
+    opacity: 0.9;
+}
+
+.links
+{
+	display:none !important;
+}
+
+h2
+{
+	display:none !important;
+}
+
+#skip-link
+{
+	display:none;
 }
 
 #content
 {
-    opacity: 1;
-    color: #fff;
+	width: 600px !important;
+}
+
+#sidebar-second
+{
+	margin-right:100px;
+	width:300px;
 }
 
 #content,
