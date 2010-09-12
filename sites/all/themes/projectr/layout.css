@@ -58,8 +58,8 @@ a:hover
 
 #page-title
 {
-	color: #111;
-	text-shadow: #fff 2px 2px 5px;
+	color: #fff;
+	text-shadow: #aaa 3px 3px 5px;
 }
 
 #page
@@ -136,4 +136,11 @@ body.two-sidebars #sidebar-first {
 
 .section {
   margin: 10px;
+}
+
+.video-div
+{
+	width:125px;
+	display:inline;
+	margin-right:10px;
 }

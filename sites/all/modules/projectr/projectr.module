@@ -100,7 +100,7 @@ function projectr_block_view($delta = '') {
 				}
 				$link = url( 'node/' . $node->nid );
 				$retval .= <<<DIVS
-					<div style='width:125px;display:inline;margin-right:15px;' title="{$node->title}">
+					<div class="video-div" title="{$node->title}">
 						<a href="{$link}">
 							<img src="$img_url" border="0" />
 						</a>
